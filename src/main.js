@@ -17,7 +17,8 @@ new Vue({
                 idCard: '333',
                 bankCard: '444',
                 phone: '555',
-                thousand: ''
+                thousand: '6666',
+                textarea: '只能输入中文'
             }
         }
     },

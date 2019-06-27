@@ -31,12 +31,13 @@ export default {
     },
     methods: {
         _input (e) {
+            this.selectionEnd = e.target.selectionEnd
             if (e.target.value && !this.regExp.test(e.target.value)) {
                 e.target.value = this.val
+                this.selectionEnd -= 1
             } else {
                 this.val = e.target.value
             }
-            this.selectionEnd = e.target.selectionEnd
             this.$emit('input', this.val)
         },
         _keydown (e) {
