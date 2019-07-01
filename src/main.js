@@ -18,7 +18,12 @@ new Vue({
                 bankCard: '444',
                 phone: '555',
                 thousand: '6666',
-                textarea: '只能输入中文'
+                textarea: '7777'
+            },
+            showValue: false,
+            tab: {
+                type: 'input-number',
+                value: ''
             }
         }
     },

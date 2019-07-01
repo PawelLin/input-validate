@@ -15,7 +15,9 @@ export default {
         },
         type: {
             type: String,
-            default: ''
+            validator (value) {
+                return ['phone', 'bankCard', 'idCard'].indexOf(value) !== -1
+            }
         },
         placeholder: {
             type: String,

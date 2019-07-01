@@ -19,19 +19,30 @@ export default {
         },
         maxlength: {
             type: Number,
-            default: 30
+            default: 200
         }
     },
     data () {
         return {
-            val: ''
+            val: this.value
         }
+    },
+    watch: {
+        value (val) {
+            if (val !== this.val) {
+                this.$refs.textarea.innerText = this.val = val
+            }
+        }
+    },
+    mounted () {
+        this.$refs.textarea.innerText = this.val
     },
     methods: {
         _input (e) {
             this.selectionEnd = document.getSelection().getRangeAt(0).startOffset
-            if (e.target.innerText.match(/[^\u4E00-\u9FA5\dA-Za-z\s~#\-()|*]/)) {
-                let inputLen = e.target.innerText.length - this.val.length
+            let len = e.target.innerText.length
+            if (len > this.maxlength || e.target.innerText.match(/[^\u4E00-\u9FA5\dA-Za-z\s~#'\-()|*]/)) {
+                let inputLen = len - this.val.length
                 let index = this.selectionEnd - inputLen
                 e.target.innerText = this.val
                 this.setSelection(e, index)
@@ -63,7 +74,7 @@ export default {
 <style scoped>
 .textarea {
     display: inline-block;
-    width: 170px;
+    width: 167px;
     max-height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -79,6 +90,8 @@ export default {
     border-style: inset;
     border-color: initial;
     border-image: initial;
+    vertical-align: middle;
+    font-size: 13px;
 }
 [contentEditable=true]:empty:before{
     content: attr(placeholder);
