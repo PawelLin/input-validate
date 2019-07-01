@@ -2,7 +2,7 @@ import { on } from '../libs/tools'
 
 const directives = {
     number: {
-        inserted: (el, binding, vnode) => {
+        bind: (el, binding, vnode) => {
             let input = el.tagName.toUpperCase() === 'INPUT' ? el : null
             if (!input) {
                 for (let i of el.children) {
@@ -20,9 +20,10 @@ const directives = {
                     }
                 }
                 on(input, 'input', handleInput)
+                on(input, 'change', handleInput)
             }
-        },
-    },
+        }
+    }
 }
 
 export default directives

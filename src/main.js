@@ -20,6 +20,7 @@ new Vue({
                 thousand: '6666',
                 textarea: '7777'
             },
+            dnumber: '888',
             showValue: false,
             tab: {
                 type: 'input-number',
@@ -40,5 +41,9 @@ new Vue({
                 this.value = this.number
             }
         },
+        test (e) {
+            console.log('page')
+            console.log(e.target.value)
+        }
     }
 })
