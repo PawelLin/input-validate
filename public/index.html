@@ -9,7 +9,7 @@
         #app > fieldset {
             margin-top: 12px;
         }
-        fieldset label {
+        fieldset label, .ivu-input-group-prepend {
             display: inline-block;
             min-width: 120px;
         }
@@ -95,6 +95,15 @@
                 <label>纯数字输入框</label>
                 <input type="tel" v-model.lazy="dnumber" v-number></input>
                 <span v-show="showValue">{{dnumber}}</span>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>iview指令演示</legend>
+            <div>
+                <iview-input v-model="iviewInput" v-iview-number type="tel">
+                    <span slot="prepend">纯数字输入框</span>
+                </iview-input>
+                <span v-show="showValue">{{iviewInput}}</span>
             </div>
         </fieldset>
         <fieldset>

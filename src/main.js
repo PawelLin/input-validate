@@ -2,8 +2,10 @@ import Vue from 'vue'
 import App from '../public/index.html'
 import importDirective from './directive'
 import importComponent from './components'
+import { Input } from 'iview'
 importDirective(Vue)
 importComponent(Vue)
+Vue.component('iview-input', Input);
 new Vue({
     el: '#app',
     template: App.body,
@@ -21,6 +23,7 @@ new Vue({
                 textarea: '7777'
             },
             dnumber: '888',
+            iviewInput: '999',
             showValue: false,
             tab: {
                 type: 'input-number',
