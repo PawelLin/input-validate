@@ -23,7 +23,7 @@ new Vue({
                 textarea: '7777'
             },
             dnumber: '888',
-            iviewInput: '999',
+            iviewInput: '',
             showValue: false,
             tab: {
                 type: 'input-number',
@@ -35,6 +35,9 @@ new Vue({
         this.regExp = {
             number: new RegExp(`^(0|[1-9]\\d*)$`)
         }
+        setTimeout(() => {
+            this.iviewInput = '999'
+        }, 0)
     },
     methods: {
         _input (e) {
@@ -43,10 +46,6 @@ new Vue({
             } else {
                 this.value = this.number
             }
-        },
-        test (e) {
-            console.log('page')
-            console.log(e.target.value)
         }
     }
 })
