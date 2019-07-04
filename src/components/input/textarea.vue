@@ -74,24 +74,28 @@ export default {
 <style scoped>
 .textarea {
     display: inline-block;
-    width: 167px;
+    padding: 6px 7px 4px;
+    width: 170px;
+    min-height: 22px;
     max-height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
     word-break: break-all;
-    -webkit-user-modify: read-write-plaintext-only;
-    border-width: 2px;
-    -webkit-appearance: textfield;
     background-color: white;
-    -webkit-rtl-ordering: logical;
     cursor: text;
-    padding: 1px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: initial;
-    border-image: initial;
     vertical-align: middle;
     font-size: 13px;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    color: #515a6e;
+    transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
+}
+.textarea:focus, .textarea:hover {
+    border-color: #42b983;
+}
+.textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(45,240,204,.2);
 }
 [contentEditable=true]:empty:before{
     content: attr(placeholder);

@@ -6,7 +6,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
     <title>输入校验</title>
-    <style scoped>
+    <style>
+        .title {
+            position: relative;
+            text-align: center;
+        }
+        .title:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            margin-left: -6%;
+            left: 50%;
+            width: 12%;
+            height: 2px;
+            background-color: #42b983;
+        }
         #app > fieldset {
             margin-top: 12px;
         }
@@ -17,7 +31,10 @@
         fieldset div + div {
             margin-top: 10px;
         }
-        .comonent > li + li {
+        .component-type > li {
+            margin-bottom: 5px;
+        }
+        .component > li + li {
             margin-top: 10px;
         }
     </style>
@@ -26,6 +43,7 @@
     <noscript>
     <strong>We're sorry but iview-pc doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <h4 class="title">Input输入限制及格式化</h4>
     <fieldset>
         <legend>原生JS演示</legend>
         <label for="js-input">数字输入框</label>
@@ -109,18 +127,18 @@
         </fieldset>
         <fieldset>
             <legend>组件分类</legend>
-            <ul>
-                <li>页面组件</li>
-                <li>基础组件</li>
-                <li>业务组件</li>
-                <li>展示组件</li>
+            <ul class="component-type">
+                <li>页面组件 - 功能页面</li>
+                <li>基础组件 - 输入框</li>
+                <li>业务组件 - 银行级联</li>
+                <li>展示组件 - 纯数据展示</li>
                 <li>递归组件 - Vue</li>
                 <li>动态组件 - Vue</li>
             </ul>
         </fieldset>
         <fieldset>
             <legend>&lt;component&gt;</legend>
-            <ul class="comonent">
+            <ul class="component">
                 <li>
                     <button @click="tab.type = 'input-number'" :disabled="tab.type === 'input-number'">纯数字输入框</button>
                 </li>
@@ -131,7 +149,7 @@
                     <button @click="tab.type = 'input-thousand'" :disabled="tab.type === 'input-thousand'">千分位符格式化</button>
                 </li>
                 <li>
-                    <comonent :is="tab.type" v-model="tab.value"></comonent>
+                    <component :is="tab.type" v-model="tab.value"></component>
                     <span>{{tab.value}}</span>
                 </li>
             </ul>

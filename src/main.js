@@ -3,6 +3,8 @@ import App from '../public/index.html'
 import importDirective from './directive'
 import importComponent from './components'
 import { Input } from 'iview'
+import './index.css'
+// import 'iview/dist/styles/iview.css'
 importDirective(Vue)
 importComponent(Vue)
 Vue.component('iview-input', Input);
