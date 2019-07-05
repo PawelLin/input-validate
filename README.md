@@ -277,6 +277,7 @@ const directives = {
                     } else {
                         value = e.target.value
                     }
+                    vnode.componentInstance.$emit('input', value)
                 }
                 const handleKeydown = e => {
                     value = e.target.value
