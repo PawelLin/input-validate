@@ -54,7 +54,7 @@ export default {
             }
             e.target.value = this.thousand(this.val)
             selectionEnd += this.comma(e.target.value).length - this.comma(_format).length
-            this.selectionEnd = selectionEnd < 0 ? 0 : selectionEnd
+            this.selectionEnd = selectionEnd <= 0 ? e.target.value.length : selectionEnd
             e.target.setSelectionRange(this.selectionEnd, this.selectionEnd)
             this.$emit('input', this.val)
         },
