@@ -75,14 +75,17 @@ export default {
                 selectionEnd -= e.target.value.substr(selectionEnd - 1, 1) === ' ' ? 1 : 0
             }
             this.selectionEnd = selectionEnd
-            e.target.setSelectionRange(this.selectionEnd, this.selectionEnd)
+            if (!isMobile()) this.setSelection(e)
             this.$emit('input', this.val)
         },
         _keydown (e) {
-            this.selectionEnd = e.target.selectionEnd
+            if (isMobile()) this.selectionEnd = e.target.selectionEnd
         },
         _keyup (e) {
-            if (isMobile()) e.target.setSelectionRange(this.selectionEnd, this.selectionEnd)
+            if (isMobile()) this.setSelection(e)
+        },
+        setSelection (e) {
+            e.target.setSelectionRange(this.selectionEnd, this.selectionEnd)
         }
     }
 }

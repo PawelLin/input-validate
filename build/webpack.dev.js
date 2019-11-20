@@ -7,7 +7,8 @@ module.exports = merge(base, {
         contentBase: './dist',
         hot: true,
         port: '3000',
-        // host: '0.0.0.0'
+        host: '0.0.0.0',
+        useLocalIp: true
     },
     plugins: [
     ]

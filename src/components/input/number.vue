@@ -17,8 +17,8 @@ export default {
             default: '请输入'
         },
         maxlength: {
-            type: [String, Number],
-            default: '9'
+            type: Number,
+            default: 9
         }
     },
     data () {
@@ -27,7 +27,7 @@ export default {
         }
     },
     created () {
-        this.regExp = new RegExp(`^(0|[1-9]\\d*)$`)
+        this.regExp = new RegExp(`^(0|[1-9]\\d{0,${this.maxlength - 1}})$`)
     },
     methods: {
         _input (e) {
@@ -38,13 +38,17 @@ export default {
             } else {
                 this.val = e.target.value
             }
+            if (!isMobile()) this.setSelection(e)
             this.$emit('input', this.val)
         },
         _keydown (e) {
-            this.selectionEnd = e.target.selectionEnd
+            if (isMobile()) this.selectionEnd = e.target.selectionEnd
         },
         _keyup (e) {
-            if (isMobile()) e.target.setSelectionRange(this.selectionEnd, this.selectionEnd)
+            if (isMobile()) this.setSelection(e)
+        },
+        setSelection (e) {
+            e.target.setSelectionRange(this.selectionEnd, this.selectionEnd)
         }
     }
 }
